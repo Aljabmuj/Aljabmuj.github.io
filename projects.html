@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Sami Aljabery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">sami<span class="blink">_</span>aljabery</a>
+        <div class="nav-links">
+            <a href="index.html">about</a>
+            <a href="projects.html" class="active">projects</a>
+            <a href="experience.html">experience</a>
+            <a href="skills.html">skills</a>
+            <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">cv</a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrap">
+
+    <header class="page-head">
+        <div class="eyebrow">// selected work</div>
+        <h1>Projects</h1>
+        <p class="lede">Hardware, embedded firmware, and distributed-systems work — with the parts I actually shipped and measured.</p>
+    </header>
+
+    <section class="block">
+        <div class="projects">
+
+            <article class="proj">
+                <div class="when">May–Jun 2026</div>
+                <div>
+                    <h3>RAID-5 Distributed Storage System</h3>
+                    <p>
+                        Fault-tolerant RAID-5 distributed file system using checksum validation and
+                        byte-by-byte XOR parity to detect corruption and reconstruct lost blocks during
+                        single-server fail-stop events.
+                    </p>
+                    <div class="metric">76% lower average server load &middot; 6-server config</div>
+                    <div class="chips">
+                        <span class="chip">Python</span>
+                        <span class="chip">Distributed Systems</span>
+                        <span class="chip">Fault Tolerance</span>
+                        <span class="chip">XOR Parity</span>
+                    </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/raid5" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+            <article class="proj">
+                <div class="when">Nov–Dec 2024</div>
+                <div>
+                    <h3>ATmega32U4 Real-Time Sensor System</h3>
+                    <p>
+                        Real-time monitoring system in C on a custom ATmega32U4 board, with hand-written
+                        I2C and LCD drivers interfacing TC74 thermal sensors and an ultrasonic sensor. Two
+                        hardware timers — one in CTC mode for a real-time clock, one in input-capture mode
+                        to measure echo pulses for distance.
+                    </p>
+                    <div class="chips">
+                        <span class="chip">C</span>
+                        <span class="chip">Bare-metal</span>
+                        <span class="chip">I2C</span>
+                        <span class="chip">Interrupts</span>
+                        <span class="chip">Custom Drivers</span>
+                    </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/atmega-sensor" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+            <article class="proj">
+                <div class="when">Sep 2023–Jun 2024</div>
+                <div>
+                    <h3>DE10-Nano FPGA Handheld Console <span class="award">Engineering Excellence Award</span></h3>
+                    <p>
+                        Directed a 4-person team building a proof-of-concept FPGA handheld on open-source
+                        MiSTer hardware emulation. Owned system integration and a custom PCB power system
+                        delivering 2+ hours of battery life.
+                    </p>
+                    <div class="chips">
+                        <span class="chip">FPGA</span>
+                        <span class="chip">MiSTer</span>
+                        <span class="chip">PCB Design</span>
+                        <span class="chip">System Integration</span>
+                    </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/fpga-handheld" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="wrap foot-inner">
+        <span>&copy; 2026 Sami Aljabery</span>
+        <span>
+            <a href="mailto:aljasam04@gmail.com">email</a> &nbsp;/&nbsp;
+            <a href="https://www.linkedin.com/in/samialjabery" target="_blank" rel="noopener">linkedin</a> &nbsp;/&nbsp;
+            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">github</a>
+        </span>
+        <span>built with GitHub Pages</span>
+    </div>
+</footer>
+
+</body>
+</html>

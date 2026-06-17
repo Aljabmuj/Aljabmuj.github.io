@@ -1,0 +1,187 @@
+/* ===========================================================
+   Sami Aljabery — portfolio shared styles
+   One stylesheet linked by every page.
+   =========================================================== */
+
+:root {
+    --bg: #0e1116;
+    --panel: #151a21;
+    --panel-2: #1b212a;
+    --ink: #e8edf2;
+    --ink-dim: #9aa6b2;
+    --ink-faint: #5f6b78;
+    --line: #232b35;
+    --trace: #46d7a8;       /* PCB-trace green — the one bold accent */
+    --trace-dim: #2f8f70;
+    --solder: #c9a227;      /* warm metallic, used sparingly */
+    --mono: "SFMono-Regular", "JetBrains Mono", "Cascadia Code", ui-monospace, Menlo, Consolas, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* faint grid, like a perfboard / schematic backdrop */
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
+}
+body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: radial-gradient(120% 80% at 50% 0%, rgba(14,17,22,0.72), var(--bg) 70%);
+    pointer-events: none; z-index: 0;
+}
+
+.wrap { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+/* ---------- Nav ---------- */
+nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(8px);
+    background: rgba(14,17,22,0.78);
+    border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+    max-width: 1060px; margin: 0 auto; padding: 0.9rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+    font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+    color: var(--ink); text-decoration: none; letter-spacing: 0.02em;
+}
+.logo .blink { color: var(--trace); }
+.nav-links a {
+    font-family: var(--mono); font-size: 0.82rem;
+    margin-left: 1.6rem; text-decoration: none; color: var(--ink-dim);
+    transition: color 0.18s; position: relative;
+}
+.nav-links a:hover { color: var(--trace); }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -0.4rem;
+    height: 2px; background: var(--trace);
+}
+@media (max-width: 560px) { .nav-links a { margin-left: 1rem; font-size: 0.78rem; } }
+
+/* ---------- Hero (home page only) ---------- */
+header.hero { padding: 5.5rem 0 3.5rem; }
+.eyebrow {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--trace);
+    letter-spacing: 0.08em; margin-bottom: 1.1rem;
+}
+.hero h1 {
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+    line-height: 1.08; font-weight: 800; letter-spacing: -0.02em;
+    max-width: 16ch;
+}
+.hero h1 .frag { color: var(--ink-dim); }
+.hero .lede { margin-top: 1.4rem; font-size: 1.12rem; color: var(--ink-dim); max-width: 60ch; }
+.hero .meta {
+    margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    font-family: var(--mono); font-size: 0.82rem; color: var(--ink-faint);
+}
+.hero .meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
+.hero .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--trace); }
+.hero .actions { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+/* ---------- Sub-page header ---------- */
+.page-head { padding: 4rem 0 2.5rem; }
+.page-head .eyebrow { margin-bottom: 0.8rem; }
+.page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; }
+.page-head .lede { margin-top: 0.9rem; color: var(--ink-dim); max-width: 60ch; }
+
+/* ---------- Buttons ---------- */
+.btn {
+    font-family: var(--mono); font-size: 0.85rem; font-weight: 600;
+    padding: 0.7rem 1.2rem; border-radius: 6px; text-decoration: none;
+    border: 1px solid var(--line); transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary { background: var(--trace); color: #06140f; border-color: var(--trace); }
+.btn-primary:hover { background: #5ee9ba; }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { border-color: var(--trace); color: var(--trace); }
+
+/* ---------- Content block spacing ---------- */
+.block { padding-bottom: 4rem; }
+
+/* ---------- Projects ---------- */
+.projects { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.proj {
+    background: var(--panel); padding: 1.8rem;
+    display: grid; grid-template-columns: 9rem 1fr; gap: 1.8rem;
+    transition: background 0.18s;
+}
+.proj:hover { background: var(--panel-2); }
+.proj .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.3rem; }
+.proj h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.proj h3 .award { font-family: var(--mono); font-size: 0.68rem; color: var(--solder); border: 1px solid var(--solder); border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.6rem; vertical-align: middle; white-space: nowrap; }
+.proj p { color: var(--ink-dim); font-size: 0.96rem; margin-bottom: 1rem; }
+.metric {
+    display: inline-block; font-family: var(--mono); font-size: 0.82rem;
+    color: var(--trace); background: rgba(70,215,168,0.08);
+    border: 1px solid var(--trace-dim); border-radius: 5px; padding: 0.25rem 0.6rem; margin-bottom: 1rem;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+.chip { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0.22rem 0.55rem; }
+.proj .links a { font-family: var(--mono); font-size: 0.82rem; color: var(--trace); text-decoration: none; }
+.proj .links a:hover { text-decoration: underline; }
+@media (max-width: 640px) { .proj { grid-template-columns: 1fr; gap: 0.7rem; } .proj .when { padding-top: 0; } }
+
+/* ---------- Experience ---------- */
+.xp { display: flex; flex-direction: column; }
+.xp-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1.8rem; padding: 1.3rem 0; border-bottom: 1px solid var(--line); }
+.xp-row:last-child { border-bottom: none; }
+.xp-row .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.2rem; }
+.xp-row .role { font-weight: 700; font-size: 1.02rem; }
+.xp-row .org { color: var(--ink-dim); font-size: 0.92rem; margin-bottom: 0.5rem; }
+.xp-row .detail { color: var(--ink-faint); font-size: 0.9rem; }
+@media (max-width: 640px) { .xp-row { grid-template-columns: 1fr; gap: 0.4rem; } .xp-row .when { padding-top: 0; } }
+
+/* ---------- About ---------- */
+.about { display: grid; grid-template-columns: 1.8fr 1fr; gap: 3rem; align-items: start; }
+.about p { color: var(--ink-dim); margin-bottom: 1rem; }
+.about p strong { color: var(--ink); font-weight: 600; }
+.portrait {
+    aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--line);
+    background: repeating-linear-gradient(45deg, var(--panel) 0 12px, var(--panel-2) 12px 24px);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-faint); font-family: var(--mono); font-size: 0.8rem; text-align: center; padding: 1rem;
+}
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+
+/* ---------- Skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.skill-group { background: var(--panel); padding: 1.4rem; }
+.skill-group h4 { font-family: var(--mono); font-size: 0.76rem; color: var(--trace); letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+.skill-group .items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skill-group .items span { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0.2rem 0.5rem; }
+
+/* ---------- CV callout (used on the about page footer area) ---------- */
+.cv-box {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.cv-box p { color: var(--ink-dim); max-width: 52ch; }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid var(--line); padding: 2.2rem 0; margin-top: auto; }
+.foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint); }
+.foot-inner a { color: var(--ink-dim); text-decoration: none; }
+.foot-inner a:hover { color: var(--trace); }
+
+/* ---------- A11y / motion ---------- */
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--trace); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
