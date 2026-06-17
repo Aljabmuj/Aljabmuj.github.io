@@ -1,197 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sami Aljabery | Hardware & Systems Engineer</title>
-    <style>
-        :root {
-            --bg-color: #fcfcfc;
-            --text-main: #1a1a1a;
-            --text-muted: #666;
-            --accent: #2563eb;
-            --card-bg: #ffffff;
-            --border: #e5e7eb;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sami Aljabery — Hardware & Systems Engineer</title>
+<style>
+    :root {
+        --bg: #0e1116;
+        --panel: #151a21;
+        --panel-2: #1b212a;
+        --ink: #e8edf2;
+        --ink-dim: #9aa6b2;
+        --ink-faint: #5f6b78;
+        --line: #232b35;
+        --trace: #46d7a8;       /* PCB-trace green, the one bold accent */
+        --trace-dim: #2f8f70;
+        --solder: #c9a227;      /* warm metallic, used sparingly */
+        --mono: "SFMono-Regular", "JetBrains Mono", "Cascadia Code", ui-monospace, Menlo, Consolas, monospace;
+        --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 0 2rem;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Navigation */
-        nav {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-        }
-        nav .logo { font-size: 1.25rem; font-weight: 700; text-decoration: none; color: var(--text-main); }
-        nav .links a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        nav .links a:hover { color: var(--accent); }
+    html { scroll-behavior: smooth; }
 
-        /* Main Container */
-        main { max-width: 1000px; margin: 4rem auto; }
+    body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        /* faint grid, like a perfboard / schematic backdrop */
+        background-image:
+            linear-gradient(var(--line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 28px 28px;
+        background-position: -1px -1px;
+    }
+    body::before {
+        /* dim the grid so it reads as texture, not a table */
+        content: "";
+        position: fixed; inset: 0;
+        background: radial-gradient(120% 80% at 50% 0%, rgba(14,17,22,0.72), var(--bg) 70%);
+        pointer-events: none; z-index: 0;
+    }
 
-        /* Hero Section */
-        .hero { margin-bottom: 5rem; }
-        .hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 1rem; }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; }
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
 
-        /* Section Headers */
-        section { margin-bottom: 5rem; scroll-margin-top: 6rem; }
-        h2.section-title { font-size: 1.5rem; margin-bottom: 2rem; border-bottom: 2px solid var(--text-main); display: inline-block; padding-bottom: 0.25rem;}
+    /* ---------- Nav ---------- */
+    nav {
+        position: sticky; top: 0; z-index: 50;
+        backdrop-filter: blur(8px);
+        background: rgba(14,17,22,0.78);
+        border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+        max-width: 1060px; margin: 0 auto; padding: 0.9rem 1.5rem;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+        font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+        color: var(--ink); text-decoration: none; letter-spacing: 0.02em;
+    }
+    .logo .blink { color: var(--trace); }
+    .nav-links a {
+        font-family: var(--mono); font-size: 0.82rem;
+        margin-left: 1.6rem; text-decoration: none; color: var(--ink-dim);
+        transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--trace); }
+    @media (max-width: 560px) { .nav-links a { margin-left: 1rem; font-size: 0.78rem; } }
 
-        /* Project Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-        }
-        .project-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .tag { background: #f3f4f6; color: #374151; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; }
-        .project-links a { text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem; }
-        .project-links a:hover { text-decoration: underline; }
+    /* ---------- Hero ---------- */
+    header.hero { padding: 6rem 0 4.5rem; }
+    .eyebrow {
+        font-family: var(--mono); font-size: 0.8rem; color: var(--trace);
+        letter-spacing: 0.08em; margin-bottom: 1.1rem;
+    }
+    .hero h1 {
+        font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+        line-height: 1.08; font-weight: 800; letter-spacing: -0.02em;
+        max-width: 16ch;
+    }
+    .hero h1 .frag { color: var(--ink-dim); }
+    .hero .lede {
+        margin-top: 1.4rem; font-size: 1.12rem; color: var(--ink-dim);
+        max-width: 60ch;
+    }
+    .hero .meta {
+        margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        font-family: var(--mono); font-size: 0.82rem; color: var(--ink-faint);
+    }
+    .hero .meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .hero .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--trace); }
+    .hero .actions { margin-top: 2.4rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
-        /* About Section Layout */
-        .about-content { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
-        .about-text p { margin-bottom: 1rem; }
-        
-        /* CV Button */
-        .cv-button {
-            display: inline-block;
-            background: var(--text-main);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: background 0.2s;
-        }
-        .cv-button:hover { background: var(--accent); }
+    .btn {
+        font-family: var(--mono); font-size: 0.85rem; font-weight: 600;
+        padding: 0.7rem 1.2rem; border-radius: 6px; text-decoration: none;
+        border: 1px solid var(--line); transition: all 0.18s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary { background: var(--trace); color: #06140f; border-color: var(--trace); }
+    .btn-primary:hover { background: #5ee9ba; }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--trace); color: var(--trace); }
 
-        /* Footer */
-        footer { max-width: 1000px; margin: 0 auto; padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; text-align: center; }
+    /* ---------- Section scaffolding ---------- */
+    section { padding: 3.5rem 0; scroll-margin-top: 5rem; }
+    .sec-head {
+        display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 2.2rem;
+        border-bottom: 1px solid var(--line); padding-bottom: 0.9rem;
+    }
+    .sec-num { font-family: var(--mono); font-size: 0.82rem; color: var(--trace); }
+    .sec-head h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.01em; }
 
-        @media (max-width: 768px) { .about-content { grid-template-columns: 1fr; } }
-    </style>
+    /* ---------- Projects ---------- */
+    .projects { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .proj {
+        background: var(--panel); padding: 1.8rem;
+        display: grid; grid-template-columns: 9rem 1fr; gap: 1.8rem;
+        transition: background 0.18s;
+    }
+    .proj:hover { background: var(--panel-2); }
+    .proj .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.3rem; }
+    .proj h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .proj h3 .award { font-family: var(--mono); font-size: 0.68rem; color: var(--solder); border: 1px solid var(--solder); border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.6rem; vertical-align: middle; white-space: nowrap; }
+    .proj p { color: var(--ink-dim); font-size: 0.96rem; margin-bottom: 1rem; }
+    .metric {
+        display: inline-block; font-family: var(--mono); font-size: 0.82rem;
+        color: var(--trace); background: rgba(70,215,168,0.08);
+        border: 1px solid var(--trace-dim); border-radius: 5px; padding: 0.25rem 0.6rem;
+        margin-bottom: 1rem;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+    .chip { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0.22rem 0.55rem; }
+    .proj .links a { font-family: var(--mono); font-size: 0.82rem; color: var(--trace); text-decoration: none; }
+    .proj .links a:hover { text-decoration: underline; }
+    @media (max-width: 640px) { .proj { grid-template-columns: 1fr; gap: 0.7rem; } .proj .when { padding-top: 0; } }
+
+    /* ---------- Experience ---------- */
+    .xp { display: flex; flex-direction: column; }
+    .xp-row {
+        display: grid; grid-template-columns: 9rem 1fr; gap: 1.8rem;
+        padding: 1.3rem 0; border-bottom: 1px solid var(--line);
+    }
+    .xp-row:last-child { border-bottom: none; }
+    .xp-row .when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.2rem; }
+    .xp-row .role { font-weight: 700; font-size: 1.02rem; }
+    .xp-row .org { color: var(--ink-dim); font-size: 0.92rem; margin-bottom: 0.5rem; }
+    .xp-row .detail { color: var(--ink-faint); font-size: 0.9rem; }
+    @media (max-width: 640px) { .xp-row { grid-template-columns: 1fr; gap: 0.4rem; } .xp-row .when { padding-top: 0; } }
+
+    /* ---------- About ---------- */
+    .about { display: grid; grid-template-columns: 1.8fr 1fr; gap: 3rem; align-items: start; }
+    .about p { color: var(--ink-dim); margin-bottom: 1rem; }
+    .about p strong { color: var(--ink); font-weight: 600; }
+    .portrait {
+        aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--line);
+        background:
+            repeating-linear-gradient(45deg, var(--panel) 0 12px, var(--panel-2) 12px 24px);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--ink-faint); font-family: var(--mono); font-size: 0.8rem; text-align: center; padding: 1rem;
+    }
+    @media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+
+    /* ---------- Skills ---------- */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .skill-group { background: var(--panel); padding: 1.4rem; }
+    .skill-group h4 { font-family: var(--mono); font-size: 0.76rem; color: var(--trace); letter-spacing: 0.04em; margin-bottom: 0.9rem; }
+    .skill-group .items { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-group .items span { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0.2rem 0.5rem; }
+
+    /* ---------- CV ---------- */
+    .cv-box {
+        background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+        padding: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .cv-box p { color: var(--ink-dim); max-width: 52ch; }
+
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--line); padding: 2.2rem 0; margin-top: 2rem; }
+    .foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint); }
+    .foot-inner a { color: var(--ink-dim); text-decoration: none; }
+    .foot-inner a:hover { color: var(--trace); }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">Sami Aljabery</a>
-        <div class="links">
-            <a href="#projects">Projects</a>
-            <a href="#about">About Me</a>
-            <a href="#cv">CV</a>
+<nav>
+    <div class="nav-inner">
+        <a href="#top" class="logo">sami<span class="blink">_</span>aljabery</a>
+        <div class="nav-links">
+            <a href="#projects">projects</a>
+            <a href="#experience">experience</a>
+            <a href="#about">about</a>
+            <a href="#skills">skills</a>
+            <a href="#cv">cv</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <main>
-        <section class="hero">
-            <h1>Hardware-Software Co-Design & Architecture.</h1>
-            <p>I am an M.Eng student at Oregon State University specializing in complex digital systems, FPGA design, and high-performance computing.</p>
-        </section>
+<div id="top" class="wrap">
 
-        <section id="projects">
-            <h2 class="section-title">Selected Projects</h2>
-            <div class="project-grid">
-                
-                <div class="project-card">
-                    <h3>FPGA Handheld Console</h3>
-                    <div class="project-tags">
-                        <span class="tag">System Design</span>
-                        <span class="tag">MiSTer</span>
-                        <span class="tag">Hardware Emulation</span>
-                    </div>
-                    <p>Served as Integrated Lead to architect and deliver a proof-of-concept handheld console using open-source hardware emulation.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/YOUR_USERNAME" target="_blank">View Repository &rarr;</a>
-                    </div>
-                </div>
+    <header class="hero">
+        <div class="eyebrow">// hardware-software co-design</div>
+        <h1>From transistor netlists <span class="frag">to HPC simulation.</span></h1>
+        <p class="lede">
+            I work across the stack between silicon and software: FPGA and digital design,
+            embedded firmware, and performance engineering on supercomputers. M.Eng. in
+            Electrical &amp; Computer Engineering at Oregon State University.
+        </p>
+        <div class="meta">
+            <span><span class="dot"></span>Eugene, OR</span>
+            <span>U.S. Citizen</span>
+            <span>M.Eng. ECE &middot; Jun 2026</span>
+        </div>
+        <div class="actions">
+            <a href="#projects" class="btn btn-primary">View projects</a>
+            <a href="assets/Sami_Aljabery_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </div>
+    </header>
 
-                <div class="project-card">
-                    <h3>16-bit Microprocessor</h3>
-                    <div class="project-tags">
-                        <span class="tag">Verilog</span>
-                        <span class="tag">Computer Architecture</span>
-                    </div>
-                    <p>Designed and simulated the complete datapath and control logic for a custom 16-bit microprocessor.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/YOUR_USERNAME" target="_blank">View Repository &rarr;</a>
-                    </div>
-                </div>
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects">
+        <div class="sec-head">
+            <span class="sec-num">01</span>
+            <h2>Selected projects</h2>
+        </div>
 
-                <div class="project-card">
-                    <h3>Distributed RAID-5 System</h3>
-                    <div class="project-tags">
-                        <span class="tag">C</span>
-                        <span class="tag">Distributed Systems</span>
-                        <span class="tag">Fault Tolerance</span>
-                    </div>
-                    <p>Built a fault-tolerant distributed storage system handling complex parity math and server-side duplicate detection.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/YOUR_USERNAME" target="_blank">View Repository &rarr;</a>
-                    </div>
-                </div>
+        <div class="projects">
 
-            </div>
-        </section>
-
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I bridge the gap between low-level hardware constraints and high-level software performance. I am currently pursuing my Master of Engineering in Electrical and Computer Engineering at Oregon State University, expecting to graduate in June 2026.</p>
-                    <p>Outside of coursework, I am the founder and President of the Embedded Systems Design Club at OSU, where I lead hardware workshops. I also recently interned as a Digital Design Engineer at onsemi, validating hardware security for automotive image sensors, and will be joining Los Alamos National Laboratory as an XCP Parallel Computing Research Fellow.</p>
-                </div>
+            <article class="proj">
+                <div class="when">May–Jun 2026</div>
                 <div>
-                    <div style="width: 100%; aspect-ratio: 1; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af;">
-                        [Profile Image Placeholder]
+                    <h3>RAID-5 Distributed Storage System</h3>
+                    <p>
+                        Fault-tolerant RAID-5 distributed file system using checksum validation and
+                        byte-by-byte XOR parity to detect corruption and reconstruct lost blocks during
+                        single-server fail-stop events.
+                    </p>
+                    <div class="metric">76% lower average server load &middot; 6-server config</div>
+                    <div class="chips">
+                        <span class="chip">Python</span>
+                        <span class="chip">Distributed Systems</span>
+                        <span class="chip">Fault Tolerance</span>
+                        <span class="chip">XOR Parity</span>
                     </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/raid5" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+            <article class="proj">
+                <div class="when">Nov–Dec 2024</div>
+                <div>
+                    <h3>ATmega32U4 Real-Time Sensor System</h3>
+                    <p>
+                        Real-time monitoring system in C on a custom ATmega32U4 board, with hand-written
+                        I2C and LCD drivers interfacing TC74 thermal sensors and an ultrasonic sensor. Two
+                        hardware timers — one in CTC mode for a real-time clock, one in input-capture mode
+                        to measure echo pulses for distance.
+                    </p>
+                    <div class="chips">
+                        <span class="chip">C</span>
+                        <span class="chip">Bare-metal</span>
+                        <span class="chip">I2C</span>
+                        <span class="chip">Interrupts</span>
+                        <span class="chip">Custom Drivers</span>
+                    </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/atmega-sensor" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+            <article class="proj">
+                <div class="when">Sep 2023–Jun 2024</div>
+                <div>
+                    <h3>DE10-Nano FPGA Handheld Console <span class="award">Engineering Excellence Award</span></h3>
+                    <p>
+                        Directed a 4-person team building a proof-of-concept FPGA handheld on open-source
+                        MiSTer hardware emulation. Owned system integration and a custom PCB power system
+                        delivering 2+ hours of battery life.
+                    </p>
+                    <div class="chips">
+                        <span class="chip">FPGA</span>
+                        <span class="chip">MiSTer</span>
+                        <span class="chip">PCB Design</span>
+                        <span class="chip">System Integration</span>
+                    </div>
+                    <div class="links"><a href="https://github.com/YOUR_USERNAME/fpga-handheld" target="_blank" rel="noopener">View repository &rarr;</a></div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience">
+        <div class="sec-head">
+            <span class="sec-num">02</span>
+            <h2>Experience</h2>
+        </div>
+
+        <div class="xp">
+            <div class="xp-row">
+                <div class="when">Jun–Aug 2026</div>
+                <div>
+                    <div class="role">XCP Parallel Computing Research Fellow</div>
+                    <div class="org">Los Alamos National Laboratory — Los Alamos, NM</div>
+                    <div class="detail">Profiling and optimizing the xRAGE multiphysics production code on the Rocinante cluster; building C++/Kokkos performance-portability layers for a Grace+Hopper system.</div>
                 </div>
             </div>
-        </section>
+            <div class="xp-row">
+                <div class="when">Jun–Sep 2025</div>
+                <div>
+                    <div class="role">Digital Design Engineering Intern</div>
+                    <div class="org">onsemi — Corvallis, OR</div>
+                    <div class="detail">Automated Verilog testbenches for the AR0827 image sensor's random bit generator; designed and routed a PCB to synchronize sensors over Raspberry Pi for high-speed shutter validation.</div>
+                </div>
+            </div>
+            <div class="xp-row">
+                <div class="when">Jan 2025–Jun 2026</div>
+                <div>
+                    <div class="role">Graduate Teaching Assistant</div>
+                    <div class="org">Oregon State University — Corvallis, OR</div>
+                    <div class="detail">System verification for 16+ ECE capstone teams; weekly recitations on AVR assembly and ATmega32U4 microcontroller projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="cv">
-            <h2 class="section-title">Curriculum Vitae</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">For a full breakdown of my academic history, research fellowships, and teaching assistant roles, please view my complete CV.</p>
-            <a href="path/to/your/Sami_Aljabery_CV.pdf" class="cv-button" target="_blank">Download Full CV (PDF)</a>
-        </section>
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about">
+        <div class="sec-head">
+            <span class="sec-num">03</span>
+            <h2>About</h2>
+        </div>
+        <div class="about">
+            <div>
+                <p>
+                    I'm most at home in the gap between low-level hardware constraints and high-level
+                    software performance — the place where a timing diagram and a profiler readout end up
+                    being the same conversation.
+                </p>
+                <p>
+                    I'm finishing my <strong>Master of Engineering in Electrical &amp; Computer Engineering</strong>
+                    at Oregon State University (Jun 2026), after completing my B.S. there with a minor in
+                    Computer Science. My graduate coursework leans toward systems: HPC architecture, modern
+                    memory systems, VLSI design, and parallel programming.
+                </p>
+                <p>
+                    I founded and lead the <strong>Embedded Systems Design Club</strong> at OSU, interned as a
+                    Digital Design Engineer at <strong>onsemi</strong> on automotive image-sensor security, and am
+                    spending summer 2026 as a parallel-computing research fellow at <strong>Los Alamos National
+                    Laboratory</strong>.
+                </p>
+            </div>
+            <div class="portrait">
+                [ replace with assets/portrait.jpg<br>or a board / waveform photo ]
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills">
+        <div class="sec-head">
+            <span class="sec-num">04</span>
+            <h2>Skills</h2>
+        </div>
+        <div class="skills">
+            <div class="skill-group">
+                <h4>LANGUAGES</h4>
+                <div class="items">
+                    <span>Python</span><span>C</span><span>C++</span><span>Verilog</span>
+                    <span>SystemVerilog</span><span>MATLAB</span><span>AVR Assembly</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>HARDWARE &amp; PROTOCOLS</h4>
+                <div class="items">
+                    <span>FPGAs</span><span>Microcontrollers</span><span>PCB Design</span>
+                    <span>SPI</span><span>I2C</span><span>UART</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>TOOLS</h4>
+                <div class="items">
+                    <span>Cadence Virtuoso</span><span>Quartus Prime</span><span>Vivado</span>
+                    <span>Fusion 360</span><span>KiCAD</span><span>QEMU</span><span>GDB</span><span>Git</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>SOFTWARE &amp; COMPUTING</h4>
+                <div class="items">
+                    <span>Linux</span><span>PyTorch</span><span>MPI</span><span>OpenMP</span>
+                    <span>CUDA</span><span>OpenCL</span><span>Kokkos</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Sami Aljabery. Built and hosted via GitHub Pages.</p>
-    </footer>
+    <!-- ===================== CV ===================== -->
+    <section id="cv">
+        <div class="sec-head">
+            <span class="sec-num">05</span>
+            <h2>Curriculum vitae</h2>
+        </div>
+        <div class="cv-box">
+            <p>Full academic history, research fellowship, and teaching roles, with detailed coursework and project breakdowns.</p>
+            <a href="assets/Sami_Aljabery_CV.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="wrap foot-inner">
+        <span>&copy; 2026 Sami Aljabery</span>
+        <span>
+            <a href="mailto:aljasam04@gmail.com">email</a> &nbsp;/&nbsp;
+            <a href="https://www.linkedin.com/in/samialjabery" target="_blank" rel="noopener">linkedin</a> &nbsp;/&nbsp;
+            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">github</a>
+        </span>
+        <span>built with GitHub Pages</span>
+    </div>
+</footer>
 
 </body>
 </html>
