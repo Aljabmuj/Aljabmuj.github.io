@@ -5,95 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Experience — Sami Aljabery</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <nav>
     <div class="nav-inner">
-        <a href="index.html" class="logo">sami<span class="blink">_</span>aljabery</a>
-        <div class="nav-links">
-            <a href="index.html">about</a>
-            <a href="projects.html">projects</a>
-            <a href="experience.html" class="active">experience</a>
-            <a href="skills.html">skills</a>
-            <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">cv</a>
-        </div>
+        <a href="index.html">About me</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
 </nav>
 
-<div class="wrap">
+<div class="container">
+    <aside class="sidebar">
+        <img src="assets/portrait.jpg" alt="Sami Aljabery" class="profile-pic">
+        <h2>Sami Aljabery</h2>
+        <p class="pronouns">he/him</p>
+        <p class="title">M.Eng. Electrical & Computer Engineering</p>
+        
+        <div class="contact-links">
+            <p><i class="fas fa-map-marker-alt"></i> Corvallis, OR</p>
+            <p><i class="fas fa-university"></i> Oregon State University</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:aljasam04@gmail.com">Email</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/samialjabery">LinkedIn</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/YOUR_USERNAME">Github</a></p>
+        </div>
+    </aside>
 
-    <header class="page-head">
-        <div class="eyebrow">// roles &amp; research</div>
+    <main class="content">
         <h1>Experience</h1>
-        <p class="lede">Research, industry, and teaching across HPC, digital design, and embedded systems.</p>
-    </header>
-
-    <section class="block">
-        <div class="xp">
-            <div class="xp-row">
-                <div class="when">Jun–Aug 2026</div>
-                <div>
-                    <div class="role">XCP Parallel Computing Research Fellow</div>
-                    <div class="org">Los Alamos National Laboratory — Los Alamos, NM</div>
-                    <div class="detail">Profiling and optimizing the xRAGE Eulerian multiphysics production code on the Rocinante HPC cluster; identifying on-node bottlenecks with OpenMP and building C++/Kokkos performance-portability layers for a Grace+Hopper developmental system.</div>
-                </div>
+        
+        <div class="list-item">
+            <div class="item-header">
+                <h3>XCP Parallel Computing Research Fellow</h3>
+                <span class="date">Jun 2026 – Aug 2026</span>
             </div>
-            <div class="xp-row">
-                <div class="when">Jun–Sep 2025</div>
-                <div>
-                    <div class="role">Digital Design Engineering Intern</div>
-                    <div class="org">onsemi — Corvallis, OR</div>
-                    <div class="detail">Automated Verilog testbenches for the AR0827 image sensor's random bit generator in Python, validating entropy and oscillator stability; designed and routed a custom PCB to synchronize sensors over Raspberry Pi for high-speed shutter validation.</div>
-                </div>
-            </div>
-            <div class="xp-row">
-                <div class="when">Jan 2025–Jun 2026</div>
-                <div>
-                    <div class="role">Graduate Teaching Assistant</div>
-                    <div class="org">Oregon State University — Corvallis, OR</div>
-                    <div class="detail">System verification for 16+ ECE capstone teams against design specs using oscilloscopes, waveform generators, loads, and testbenches; weekly Computer Organization recitations on AVR assembly and ATmega32U4 projects.</div>
-                </div>
-            </div>
-            <div class="xp-row">
-                <div class="when">Mar 2022–Dec 2024</div>
-                <div>
-                    <div class="role">EECS Undergraduate Learning Assistant</div>
-                    <div class="org">Oregon State University — Corvallis, OR</div>
-                    <div class="detail">Recitations and labs for 60+ students in Electrical Fundamentals I/II and Digital Logic Design; mentored SystemVerilog and ModelSim workflows, verifying FPGA implementations such as VGA drivers on DE10-Lite boards via Quartus Prime.</div>
-                </div>
-            </div>
-            <div class="xp-row">
-                <div class="when">Aug 2024–Jun 2026</div>
-                <div>
-                    <div class="role">President — Embedded Systems Design Club</div>
-                    <div class="org">Oregon State University — Corvallis, OR</div>
-                    <div class="detail">Founded the club and ran 20+ meetings, workshops, and projects focused on hardware fundamentals, communication protocols, and debugging.</div>
-                </div>
-            </div>
+            <p class="org">Los Alamos National Laboratory</p>
+            <p>Profiling and optimizing the xRAGE Eulerian multiphysics production code on the Rocinante HPC cluster; identifying on-node bottlenecks with OpenMP and building C++/Kokkos performance-portability layers for a Grace+Hopper developmental system.</p>
         </div>
-    </section>
 
-    <section class="block">
-        <div class="cv-box">
-            <p>Want the full version — education, coursework, and every role in one place?</p>
-            <a href="assets/Sami_Aljabery_CV.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <div class="list-item">
+            <div class="item-header">
+                <h3>Digital Design Engineering Intern</h3>
+                <span class="date">Jun 2025 – Sep 2025</span>
+            </div>
+            <p class="org">onsemi</p>
+            <p>Automated Verilog testbenches for the AR0827 image sensor's random bit generator in Python, validating entropy and oscillator stability; designed and routed a custom PCB to synchronize sensors over Raspberry Pi for high-speed shutter validation.</p>
         </div>
-    </section>
 
+        <div class="list-item">
+            <div class="item-header">
+                <h3>Graduate Teaching Assistant</h3>
+                <span class="date">Jan 2025 – Jun 2026</span>
+            </div>
+            <p class="org">Oregon State University</p>
+            <p>System verification for 16+ ECE capstone teams against design specs using oscilloscopes, waveform generators, loads, and testbenches; weekly Computer Organization recitations on AVR assembly and ATmega32U4 projects.</p>
+        </div>
+
+        <div class="list-item">
+            <div class="item-header">
+                <h3>President, Embedded Systems Design Club</h3>
+                <span class="date">Aug 2024 – Jun 2026</span>
+            </div>
+            <p class="org">Oregon State University</p>
+            <p>Founded the club and ran 20+ meetings, workshops, and projects focused on hardware fundamentals, communication protocols, and debugging.</p>
+        </div>
+
+        <div class="list-item">
+            <div class="item-header">
+                <h3>EECS Undergraduate Learning Assistant</h3>
+                <span class="date">Mar 2022 – Dec 2024</span>
+            </div>
+            <p class="org">Oregon State University</p>
+            <p>Recitations and labs for 60+ students in Electrical Fundamentals I/II and Digital Logic Design; mentored SystemVerilog and ModelSim workflows, verifying FPGA implementations such as VGA drivers on DE10-Lite boards via Quartus Prime.</p>
+        </div>
+    </main>
 </div>
-
-<footer>
-    <div class="wrap foot-inner">
-        <span>&copy; 2026 Sami Aljabery</span>
-        <span>
-            <a href="mailto:aljasam04@gmail.com">email</a> &nbsp;/&nbsp;
-            <a href="https://www.linkedin.com/in/samialjabery" target="_blank" rel="noopener">linkedin</a> &nbsp;/&nbsp;
-            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">github</a>
-        </span>
-        <span>built with GitHub Pages</span>
-    </div>
-</footer>
 
 </body>
 </html>
