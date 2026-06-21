@@ -177,3 +177,77 @@ nav {
         flex-wrap: wrap;
     }
 }
+
+/* --- Additions for Experience, Projects, and Skills --- */
+
+.list-item {
+    margin-bottom: 35px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.item-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.date {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.org {
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+.award-badge {
+    font-size: 0.75rem;
+    color: #b48600;
+    border: 1px solid #b48600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.chip {
+    background: #f8f9fa;
+    color: var(--text-light);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.skill-category h3 {
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
