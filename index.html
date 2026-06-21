@@ -3,88 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sami Aljabery — Hardware &amp; Systems Engineer</title>
+<title>Sami Aljabery — Portfolio</title>
 <link rel="stylesheet" href="style.css">
+<!-- FontAwesome for the sidebar icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <nav>
     <div class="nav-inner">
-        <a href="index.html" class="logo">sami<span class="blink">_</span>aljabery</a>
-        <div class="nav-links">
-            <a href="index.html" class="active">about</a>
-            <a href="projects.html">projects</a>
-            <a href="experience.html">experience</a>
-            <a href="skills.html">skills</a>
-            <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">cv</a>
-        </div>
+        <a href="index.html" class="active">About me</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
 </nav>
 
-<div class="wrap">
+<div class="container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <!-- Make sure to place a square image in your assets folder -->
+        <img src="assets/portrait.jpg" alt="Sami Aljabery" class="profile-pic">
+        <h2>Sami Aljabery</h2>
+        <p class="pronouns">he/him</p>
+        <p class="title">M.Eng. Electrical & Computer Engineering</p>
+        
+        <div class="contact-links">
+            <p><i class="fas fa-map-marker-alt"></i> Corvallis, OR</p>
+            <p><i class="fas fa-university"></i> Oregon State University</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:aljasam04@gmail.com">Email</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/samialjabery">LinkedIn</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/YOUR_USERNAME">Github</a></p>
+        </div>
+    </aside>
 
-    <header class="hero">
-        <div class="eyebrow">// hardware-software co-design</div>
-        <h1>From Digital Design <span class="frag">to High Performance Computing.</span></h1>
-        <p class="lede">
-            I work across the stack between silicon and software: FPGA and digital design,
-            embedded firmware, and performance engineering on supercomputers. M.Eng. in
-            Electrical &amp; Computer Engineering at Oregon State University.
+    <!-- Right Main Content -->
+    <main class="content">
+        <h1>About me</h1>
+        <p>
+            My engineering focus bridges the gap between digital hardware design and high-performance computing (HPC) software. I recently completed my Master of Engineering in Electrical and Computer Engineering at Oregon State University, and my current work centers on parallel computing optimization and hardware-software co-design. 
         </p>
-        <div class="meta">
-            <span><span class="dot"></span>Eugene, OR</span>
-            <span>U.S. Citizen</span>
-            <span>M.Eng. ECE &middot; Jun 2026</span>
-        </div>
-        <div class="actions">
-            <a href="projects.html" class="btn btn-primary">View projects</a>
-            <a href="assets/Sami_Aljabery_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download CV (PDF)</a>
-        </div>
-    </header>
+        <p>
+            I am passionate about developing robust systems, from emulation and game console hardware to large multiphysics simulations. My specific technical interests include:
+        </p>
+        
+        <ul>
+            <li>Computer architecture, CPU design, and hardware emulation</li>
+            <li>FPGA development using Verilog and SystemVerilog</li>
+            <li>High-performance computing and parallel computing optimization</li>
+        </ul>
 
-    <section class="block">
-        <div class="about">
-            <div>
-                <p>
-                    I'm most at home in the gap between low-level hardware constraints and high-level
-                    software performance — the place where a timing diagram and a profiler readout end up
-                    being the same conversation.
-                </p>
-                <p>
-                    I'm finishing my <strong>Master of Engineering in Electrical &amp; Computer Engineering</strong>
-                    at Oregon State University (Jun 2026), after completing my B.S. there with a minor in
-                    Computer Science. My graduate coursework leans toward systems: HPC architecture, modern
-                    memory systems, VLSI design, and parallel programming.
-                </p>
-                <p>
-                    I founded and lead the <strong>Embedded Systems Design Club</strong> at OSU, interned as a
-                    Digital Design Engineer at <strong>onsemi</strong> on automotive image sensors, and am
-                    spending summer 2026 as a parallel computing research intern at <strong>Los Alamos National
-                    Laboratory</strong>.
-                </p>
-                <p style="margin-top: 1.6rem; font-family: var(--mono); font-size: 0.85rem;">
-                    <a href="projects.html" style="color: var(--trace); text-decoration: none;">See the projects &rarr;</a>
-                </p>
-            </div>
-            <div class="portrait">
-                [ replace with assets/portrait.jpg<br>or a board / waveform photo ]
-            </div>
-        </div>
-    </section>
-
+        <h1>Selected projects</h1>
+        <p>
+            <strong><a href="projects.html">DE10-Nano FPGA Handheld Console</a></strong><br>
+            Directed the development of a proof-of-concept FPGA handheld running on open-source MiSTer hardware emulation, earning the Engineering Excellence Award.
+        </p>
+        <p>
+            <strong><a href="projects.html">RAID-5 Distributed Storage System</a></strong><br>
+            Built a fault-tolerant distributed file system utilizing checksum validation and byte-by-byte XOR parity to handle fail-stop events.
+        </p>
+        <p>
+            <strong><a href="projects.html">AeroFusion</a></strong><br>
+            Implemented a Physics-Informed Neural Network surrogate model for a Navier-Stokes equation solver in OpenFOAM.
+        </p>
+    </main>
 </div>
-
-<footer>
-    <div class="wrap foot-inner">
-        <span>&copy; 2026 Sami Aljabery</span>
-        <span>
-            <a href="mailto:aljasam04@gmail.com">email</a> &nbsp;/&nbsp;
-            <a href="https://www.linkedin.com/in/samialjabery" target="_blank" rel="noopener">linkedin</a> &nbsp;/&nbsp;
-            <a href="https://github.com/Aljabmuj" target="_blank" rel="noopener">github</a>
-        </span>
-        <span>built with GitHub Pages</span>
-    </div>
-</footer>
 
 </body>
 </html>
