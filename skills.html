@@ -5,76 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills — Sami Aljabery</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <nav>
     <div class="nav-inner">
-        <a href="index.html" class="logo">sami<span class="blink">_</span>aljabery</a>
-        <div class="nav-links">
-            <a href="index.html">about</a>
-            <a href="projects.html">projects</a>
-            <a href="experience.html">experience</a>
-            <a href="skills.html" class="active">skills</a>
-            <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">cv</a>
-        </div>
+        <a href="index.html">About me</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="assets/Sami_Aljabery_CV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
 </nav>
 
-<div class="wrap">
+<div class="container">
+    <aside class="sidebar">
+        <img src="assets/portrait.jpg" alt="Sami Aljabery" class="profile-pic">
+        <h2>Sami Aljabery</h2>
+        <p class="pronouns">he/him</p>
+        <p class="title">M.Eng. Electrical & Computer Engineering</p>
+        
+        <div class="contact-links">
+            <p><i class="fas fa-map-marker-alt"></i> Corvallis, OR</p>
+            <p><i class="fas fa-university"></i> Oregon State University</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:aljasam04@gmail.com">Email</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/samialjabery">LinkedIn</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/YOUR_USERNAME">Github</a></p>
+        </div>
+    </aside>
 
-    <header class="page-head">
-        <div class="eyebrow">// toolbox</div>
-        <h1>Skills</h1>
-        <p class="lede">The languages, tools, and platforms I reach for across hardware and software work.</p>
-    </header>
+    <main class="content">
+        <h1>Technical Skills</h1>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="chip-container">
+                    <span class="chip">Python</span>
+                    <span class="chip">C / C++</span>
+                    <span class="chip">Verilog</span>
+                    <span class="chip">SystemVerilog</span>
+                    <span class="chip">MATLAB</span>
+                    <span class="chip">AVR Assembly</span>
+                </div>
+            </div>
 
-    <section class="block">
-        <div class="skills">
-            <div class="skill-group">
-                <h4>LANGUAGES</h4>
-                <div class="items">
-                    <span>Python</span><span>C</span><span>C++</span><span>Verilog</span>
-                    <span>SystemVerilog</span><span>MATLAB</span><span>AVR Assembly</span>
+            <div class="skill-category">
+                <h3>Hardware & Protocols</h3>
+                <div class="chip-container">
+                    <span class="chip">FPGAs</span>
+                    <span class="chip">Microcontrollers</span>
+                    <span class="chip">PCB Design</span>
+                    <span class="chip">SPI</span>
+                    <span class="chip">I2C</span>
+                    <span class="chip">UART</span>
                 </div>
             </div>
-            <div class="skill-group">
-                <h4>HARDWARE &amp; PROTOCOLS</h4>
-                <div class="items">
-                    <span>FPGAs</span><span>Microcontrollers</span><span>PCB Design</span>
-                    <span>SPI</span><span>I2C</span><span>UART</span>
+
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="chip-container">
+                    <span class="chip">Cadence Virtuoso</span>
+                    <span class="chip">Quartus Prime</span>
+                    <span class="chip">Vivado</span>
+                    <span class="chip">Fusion 360</span>
+                    <span class="chip">KiCAD</span>
+                    <span class="chip">QEMU</span>
+                    <span class="chip">GDB</span>
+                    <span class="chip">Git</span>
                 </div>
             </div>
-            <div class="skill-group">
-                <h4>TOOLS</h4>
-                <div class="items">
-                    <span>Cadence Virtuoso</span><span>Quartus Prime</span><span>Vivado</span>
-                    <span>Fusion 360</span><span>KiCAD</span><span>QEMU</span><span>GDB</span><span>Git</span>
-                </div>
-            </div>
-            <div class="skill-group">
-                <h4>SOFTWARE &amp; COMPUTING</h4>
-                <div class="items">
-                    <span>Linux</span><span>PyTorch</span><span>MPI</span><span>OpenMP</span>
-                    <span>CUDA</span><span>OpenCL</span><span>Kokkos</span>
+
+            <div class="skill-category">
+                <h3>Software & Computing</h3>
+                <div class="chip-container">
+                    <span class="chip">Linux</span>
+                    <span class="chip">PyTorch</span>
+                    <span class="chip">MPI</span>
+                    <span class="chip">OpenMP</span>
+                    <span class="chip">CUDA</span>
+                    <span class="chip">OpenCL</span>
+                    <span class="chip">Kokkos</span>
                 </div>
             </div>
         </div>
-    </section>
-
+    </main>
 </div>
-
-<footer>
-    <div class="wrap foot-inner">
-        <span>&copy; 2026 Sami Aljabery</span>
-        <span>
-            <a href="mailto:aljasam04@gmail.com">email</a> &nbsp;/&nbsp;
-            <a href="https://www.linkedin.com/in/samialjabery" target="_blank" rel="noopener">linkedin</a> &nbsp;/&nbsp;
-            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">github</a>
-        </span>
-        <span>built with GitHub Pages</span>
-    </div>
-</footer>
 
 </body>
 </html>
