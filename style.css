@@ -1,10 +1,10 @@
 /* Core Variables & Typography */
 :root {
-    --text-main: #333333;
+    --text-main: #000000;
     --text-light: #5a5a5a;
     --link-color: #3b82f6; /* A clean, accessible blue for links */
-    --bg-color: #71a6e2;
-    --border-color: #eaeaea;
+    --bg-color: #b1d6ff;
+    --border-color: #00a2ff;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
