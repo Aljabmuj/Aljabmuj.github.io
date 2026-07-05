@@ -26,7 +26,7 @@ body {
 nav {
     border-bottom: 1px solid var(--border-color);
     padding: 25px 0;
-    background: #fafafa;
+    background: #8a6ff6;
 }
 
 .nav-inner {
