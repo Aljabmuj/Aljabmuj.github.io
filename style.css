@@ -3,7 +3,7 @@
     --text-main: #333333;
     --text-light: #5a5a5a;
     --link-color: #3b82f6; /* A clean, accessible blue for links */
-    --bg-color: #ffffff;
+    --bg-color: #71a6e2;
     --border-color: #eaeaea;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -230,7 +230,7 @@ nav {
 }
 
 .chip {
-    background: #5495d6;
+    background: #f8f9fa;
     color: var(--text-light);
     padding: 4px 12px;
     border-radius: 15px;
